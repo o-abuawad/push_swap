@@ -10,10 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
 void	rotate(t_stack *s)
 {
-	t_node *first;
-	t_node *second;
+	t_node	*first;
+	t_node	*second;
 
 	if (!s || s->size < 2)
 		return ;
