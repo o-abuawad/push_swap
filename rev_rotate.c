@@ -12,9 +12,12 @@
 
 void	rev_rotate(t_stack *s)
 {
-	t_node	*tmp;
+	t_node	*last;
+
 	if (!s || s->size < 2)
 		return ;
-	tmp = s->head;
-	tmp->next = s->head;
+	last = ft_lstlast(s);
+	last->next = s->head;
+	last = ft_lstlast(s);
+	last->next = NULL;
 }
