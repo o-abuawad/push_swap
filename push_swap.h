@@ -24,4 +24,18 @@ typedef struct s_stack {
 	int	size;
 }	t_stack;
 
+typedef enum e_mode
+{
+	SIMPLE,
+	MEDIUM,
+	COMPLEX,
+	ADAPTIVE
+}	t_mode;
+
+typedef struct s_options
+{
+	t_mode	mode;
+	int	bench;
+}	t_options;
+
 #endif // !PUSH_SWAP.H

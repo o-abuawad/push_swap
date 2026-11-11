@@ -10,53 +10,70 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	check_arg(int argc, char **argv)
+#include "push_swap.h"
+
+int	check_flag(char *argv, s_options *options)
 {
-	if (ft_strncmp(argv[1], "--", 2) == 0)
-		argc--;
-	if (argc == 2)
-	{
-		char **format;
-		int result;
-		format = ft_split(argv[2]);
-		result = check_number(format, 0);
-		if (result == 0)
-			display_error();
-		check_flag();
-	}
-	else if (argc > 2)
-	{
-		int	result;
-		result = check_number(argv[2][0], 1);
-		if (result == 0)
-			display_error();
-		check_flag();
-	}
+	if (!ft_strcmp(argv[i], "--simple"))
+		options->mode = SIMPLE;
+	else if (!ft_strcmp(argv, "--medium"))
+		options->mode = MEDIUM;
+	else if (!ft_strcmp(argv, "--complex"))
+		options->mode = COMPLEX;
+	else if (!ft_strcmp(argv, "--adaptive"))
+		options.mode = ADAPTIVE;
+	else if (!ft_strcmp(argv, "--bench"))
+		options->bench = 1;
+	else
+		return(-1);
+	return (0);
 }
 
 int	check_number(char **number, int start)
 {
+	
 	// check for dup, char, range
 	// start (0, 1) for where the function will start
 }
 
-char	display_error()
+void	display_error()
 {
 	write(1,"Error\n",6);
-	return (0);
+	exit (1);
 	// print error and end program
 }
 
-int	check_flag()
+int	check_arg(int argc, char **argv)
 {
-	if (ft_strncmp(argv[1], "--simple", 8) == 0)
-		simple();
-	else if (ft_strncmp(argv[1], "--medium", 8) == 0)
-		medium();
-	else if (ft_strncmp(argv[1], "--complex", 9) == 0)
-		complex();
-	else if (ft_strncmp(argv[1], "--adaptive", 9) == 0)
-		adaptive();
+	t_options	options;
+	int	i;
+	int	start;
+	int	num_ags;
+
+	options->mode = ADAPTIVE;
+	options->bench = 0;
+	i = 0;
+	while(i < argc && check_flag(argv[i], &options) == 0)
+		i++;
+	start = i;
+	num_ags = argc - i;
+	if (num_ags == 1)
+	{
+		char **format;
+		int result;
+		format = ft_split(argv[start]);
+		result = check_number(format);
+		if (result == 0)
+			display_error();
+	}
+	else if (num_ags > 1)
+	{
+		int	result;
+		result = check_number(&argv[start]);
+		if (result == 0)
+			display_error();
+	}
 	else
-		return (0);
+		display_error();
+	return(0);
 }
