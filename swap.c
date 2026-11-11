@@ -12,15 +12,13 @@
 
 void	swap(t_stack *s)
 {
-	t_node *first;
-	t_node *second;
+	t_node	*first;
+	t_node	*second;
 
 	if (!s || s->size < 2)
 		return ;
-
 	first = s->head;
 	second = first->next;
-
 	first->next = second->next;
 	second->next = first;
 	s->head = second;

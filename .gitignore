@@ -1,0 +1,5 @@
+# Ignore log files
+*.log
+a.out
+# Ignore temporary files
+temp/
