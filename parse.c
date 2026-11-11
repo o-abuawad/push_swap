@@ -49,16 +49,14 @@ char	display_error()
 
 int	check_flag()
 {
-	if (ft_strcmp(argv[1], "--simple", 8) == 0)
+	if (ft_strncmp(argv[1], "--simple", 8) == 0)
 		simple();
-	else if (ft_strcmp(argv[1], "--medium", 8) == 0)
+	else if (ft_strncmp(argv[1], "--medium", 8) == 0)
 		medium();
-	else if (ft_strcmp(argv[1], "--complex", 9) == 0)
+	else if (ft_strncmp(argv[1], "--complex", 9) == 0)
 		complex();
-	else if (ft_strcmp(argv[1], "--adaptive", 9) == 0)
+	else if (ft_strncmp(argv[1], "--adaptive", 9) == 0)
 		adaptive();
 	else
 		return (0);
-	else
-		adaptive()
 }

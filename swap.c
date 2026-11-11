@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_rotate.c                                       :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oabu-awa <oabu-awa@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/02 11:09:13 by oabu-awa          #+#    #+#             */
-/*   Updated: 2026/11/02 11:11:07 by oabu-awa         ###   ########.fr       */
+/*   Created: 2026/11/02 11:11:56 by oabu-awa          #+#    #+#             */
+/*   Updated: 2026/11/02 11:16:03 by oabu-awa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	rev_rotate(t_stack *s)
+void	swap(t_stack *s)
 {
+	t_node *first;
+	t_node *second;
+
 	if (!s || s->size < 2)
 		return ;
-	s->head = s->head->prev;
+
+	first = s->head;
+	second = first->next;
+
+	first->next = second->next;
+	second->next = first;
+	s->head = second;
 }
