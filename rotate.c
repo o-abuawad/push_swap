@@ -20,7 +20,9 @@ void	rotate(t_stack *s)
 	if (!s || s->size < 2)
 		return ;
 	first = s->head;
-	second = ft_lstlast(s);
+	second = first;
+	while (second->next)
+		second = second->next;
 	s->head = first->next;
 	second->next = first;
 	first->next = NULL;

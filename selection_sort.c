@@ -19,17 +19,24 @@ void	selection_sort(t_stack *a, t_stack *b)
 	t_node	*first;
 	int		value;
 
-	first = a->head;
-	value = first->val;
-	while (first->next)
+	if (!a || !b)
+		return ;
+	while (a->size > 0)
 	{
-		if (first->next->val < value)
-			value = first->next->val;
-		first = first->next;
-	}
-	printf("Value of min: %d\n", value);
-	while (a->head)
+		first = a->head;
+		value = first->val;
+		while (first)
+		{
+			if (first->val > value)
+				value = first->val;
+			first = first->next;
+		}
+		while (a->head->val != value)
+			ra(a);
 		pb(a, b);
+	}
+	while (b->size > 0)
+		pa(a, b);
 }
 
 t_node	*push_s(t_stack *s, int v)
@@ -66,12 +73,16 @@ int	main(void)
 	stackA.size = 0;
 	stackB.head = NULL;
 	stackB.size = 0;
-	push_s(&stackA, 10);
-	push_s(&stackA, 20);
-	push_s(&stackA, 0);
 	push_s(&stackA, 30);
-	push_s(&stackA, -210);
+	push_s(&stackA, -23);
+	push_s(&stackA, 0);
+	push_s(&stackA, 10);
+	push_s(&stackA, 20.6);
+	push_s(&stackA, -4);
+	push_s(&stackA, 210);
+	printf("STACK A BEFORE\n");
 	display(stackA.head);
 	selection_sort(&stackA, &stackB);
-	display(stackB.head);
+	printf("STACK A AFTER\n");
+	display(stackA.head);
 }

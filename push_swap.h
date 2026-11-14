@@ -43,7 +43,6 @@ typedef struct s_options
 	int	bench;
 }	t_options;
 
-#endif // !PUSH_SWAP.H
 t_node	*pop(t_stack *s);
 void	push(t_stack *s, t_node *node);
 void	swap(t_stack *s);
