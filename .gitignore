@@ -1,5 +1,6 @@
 # Ignore log files
 *.log
 a.out
+push_swap
 # Ignore temporary files
 temp/
