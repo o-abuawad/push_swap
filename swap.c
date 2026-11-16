@@ -6,9 +6,11 @@
 /*   By: oabu-awa <oabu-awa@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 11:11:56 by oabu-awa          #+#    #+#             */
-/*   Updated: 2026/11/02 11:16:03 by oabu-awa         ###   ########.fr       */
+/*   Updated: 2026/11/16 09:44:20 by oabu-awa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	swap(t_stack *s)
 {

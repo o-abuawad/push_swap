@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void	selection_sort(t_stack *a, t_stack *b)
 {
@@ -37,52 +35,4 @@ void	selection_sort(t_stack *a, t_stack *b)
 	}
 	while (b->size > 0)
 		pa(a, b);
-}
-
-t_node	*push_s(t_stack *s, int v)
-{
-	t_node	*new_node;
-
-	new_node = malloc(sizeof(t_node));
-	if (!new_node)
-		return (NULL);
-	new_node->val = v;
-	new_node->next = s->head;
-	s->head = new_node;
-	s->size++;
-	return (new_node);
-}
-
-void	display(t_node *stack)
-{
-	t_node	*tmp;
-
-	tmp = stack;
-	while (tmp)
-	{
-		printf("Stack: %d\n", tmp->val);
-		tmp = tmp->next;
-	}
-}
-int	main(void)
-{
-	t_stack	stackA;
-	t_stack	stackB;
-
-	stackA.head = NULL;
-	stackA.size = 0;
-	stackB.head = NULL;
-	stackB.size = 0;
-	push_s(&stackA, 30);
-	push_s(&stackA, -23);
-	push_s(&stackA, 0);
-	push_s(&stackA, 10);
-	push_s(&stackA, 20.6);
-	push_s(&stackA, -4);
-	push_s(&stackA, 210);
-	printf("STACK A BEFORE\n");
-	display(stackA.head);
-	selection_sort(&stackA, &stackB);
-	printf("STACK A AFTER\n");
-	display(stackA.head);
 }
