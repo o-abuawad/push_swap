@@ -14,14 +14,14 @@
 
 int	check_flag(char *argv, s_options *options)
 {
-	if (!ft_strcmp(argv[i], "--simple"))
+	if (!ft_strcmp(argv, "--simple"))
 		options->mode = SIMPLE;
 	else if (!ft_strcmp(argv, "--medium"))
 		options->mode = MEDIUM;
 	else if (!ft_strcmp(argv, "--complex"))
 		options->mode = COMPLEX;
 	else if (!ft_strcmp(argv, "--adaptive"))
-		options.mode = ADAPTIVE;
+		options->mode = ADAPTIVE;
 	else if (!ft_strcmp(argv, "--bench"))
 		options->bench = 1;
 	else
@@ -29,30 +29,21 @@ int	check_flag(char *argv, s_options *options)
 	return (0);
 }
 
-int	check_number(char **number, int start)
-{
-	
-	// check for dup, char, range
-	// start (0, 1) for where the function will start
-}
-
 void	display_error()
 {
-	write(1,"Error\n",6);
+	write(2,"Error\n",6);
 	exit (1);
 	// print error and end program
 }
 
-int	check_arg(int argc, char **argv)
+int	check_arg(int argc, char **argv, t_stack *a)
 {
 	t_options	options;
 	int	i;
 	int	start;
 	int	num_ags;
 
-	options->mode = ADAPTIVE;
-	options->bench = 0;
-	i = 0;
+	i = 1;
 	while(i < argc && check_flag(argv[i], &options) == 0)
 		i++;
 	start = i;
@@ -61,15 +52,15 @@ int	check_arg(int argc, char **argv)
 	{
 		char **format;
 		int result;
-		format = ft_split(argv[start]);
-		result = check_number(format);
+		format = ft_split(argv[start] ,' '); //لازم اعمل فريي لل format
+		result = parse_to_stack(format, 0, &a);
 		if (result == 0)
 			display_error();
 	}
 	else if (num_ags > 1)
 	{
 		int	result;
-		result = check_number(&argv[start]);
+		result = parse_to_stack(argv, start, &a);
 		if (result == 0)
 			display_error();
 	}

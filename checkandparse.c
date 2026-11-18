@@ -55,14 +55,15 @@ static void	append_node(t_stack *a, t_node *node)
 	a->size++;
 }
 
-int	parse_to_stack(int argc, char **argv, int start, t_stack *a)
+int	parse_to_stack(char **args, int start,t_stack *a)
 {
 	long	val;
 	t_node	*node;
 
-	while (start < argc)
+	while (args && args[start])
 	{
-		val = ft_atoi(argv[start]);
+		is_digit(args[start]);
+		val = ft_atoi(args[start]);
 		if (val < -2147483648 || val > 2147483647 || has_duplicate(a, (int)val))
 			return (0);
 		node = new_node((int)val);
