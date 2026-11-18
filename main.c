@@ -21,7 +21,7 @@ int	main(int argc,char **argv)
 	t_options options;
 
 	if(argc < 2)
-		result(0);
+		return(0);
 	stack_a.head = NULL;
 	stack_a.size = 0;
 	stack_b.head = NULL;
