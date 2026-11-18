@@ -10,15 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static void	sort_arr(int *a, int size)
+#include "push_swap.h"
+
+static void	sort_arr(int *arr, int size)
 {
 	int	i;
 	int	j;
 	int	tmp;
 
+	i = 0;
 	while (i < size - 1)
 	{
-		while (j - size - i - 1)
+		j = 0;
+		while (j < size - i - 1)
 		{
 			if (arr[j] > arr[j + 1])
 			{

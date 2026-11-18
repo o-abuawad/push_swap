@@ -6,7 +6,7 @@
 /*   By: oabu-awa <oabu-awa@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 11:02:52 by oabu-awa          #+#    #+#             */
-/*   Updated: 2026/11/02 11:05:42 by oabu-awa         ###   ########.fr       */
+/*   Updated: 2026/11/18 14:13:53 by osama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,41 +40,67 @@ typedef enum e_mode
 typedef struct s_options
 {
 	t_mode	mode;
-	int	bench;
+	int		bench;
 }	t_options;
 
+typedef struct s_bench
+{
+	double	disorder;
+	char	*strategy;
+	int		total;
+	int		sa;
+	int		sb;
+	int		ss;
+	int		pa;
+	int		pb;
+	int		ra;
+	int		rb;
+	int		rr;
+	int		rra;
+	int		rrb;
+	int		rrr;
+}	t_bench;
+
+typedef struct s_ps
+{
+	t_stack		a;
+	t_stack		b;
+	t_options	opt;
+	t_bench		bench;
+}	t_ps;
+
+/* Internal stack helpers */
 t_node	*pop(t_stack *s);
 void	push(t_stack *s, t_node *node);
-void	swap(t_stack *s);
-void	rotate(t_stack *s);
-void	rev_rotate(t_stack *s);
+int		swap(t_stack *s);
+int		rotate(t_stack *s);
+int		rev_rotate(t_stack *s);
 
-void	sa(t_stack *a);
-void	sb(t_stack *b);
-void	ss(t_stack *a, t_stack *b);
+/* Push_swap operations */
+void	sa(t_ps *ps);
+void	sb(t_ps *ps);
+void	ss(t_ps *ps);
+void	pa(t_ps *ps);
+void	pb(t_ps *ps);
+void	ra(t_ps *ps);
+void	rb(t_ps *ps);
+void	rr(t_ps *ps);
+void	rra(t_ps *ps);
+void	rrb(t_ps *ps);
+void	rrr(t_ps *ps);
 
-void	pa(t_stack *a, t_stack *b);
-void	pb(t_stack *a, t_stack *b);
+/* Algorithms */
+int		assign_index(t_stack *a);
+double	compute_disorder(t_stack *a);
+void	selection_sort(t_ps *ps);
+void	medium_sort(t_ps *ps);
+void	complex_sort(t_ps *ps);
+void	adaptive_sort(t_ps *ps);
 
-void	ra(t_stack *a);
-void	rb(t_stack *b);
-void	rr(t_stack *a, t_stack *b);
+/* Bench & Utils */
+void	print_bench(t_ps *ps);
+void	free_stack(t_stack *s);
 
-void	rra(t_stack *a);
-void	rrb(t_stack *b);
-void	rrr(t_stack *a, t_stack *b);
-
-int		check_arg(int argc, char **argv);
-int		check_number(char **number, int start);
-void	display_error(void);
-int		check_flag(char **argv);
-
-void	selection_sort(t_stack *a, t_stack *b);
-void	simple(void);
-void	medium(void);
-void	complex(void);
-void	adaptive(void);
-
-t_node	*ft_lstlast(t_stack *s);
+/* Parsing (to be linked by partner) */
 
 #endif

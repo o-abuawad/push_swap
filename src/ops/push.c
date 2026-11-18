@@ -33,3 +33,29 @@ void	push(t_stack *s, t_node *node)
 	s->head = node;
 	s->size++;
 }
+
+void	pa(t_ps *ps)
+{
+	t_node	*node;
+
+	node = pop(&ps->b);
+	if (!node)
+		return ;
+	push(&ps->a, node);
+	write(1, "pa\n", 3);
+	ps->bench.pa++;
+	ps->bench.total++;
+}
+
+void	pb(t_ps *ps)
+{
+	t_node	*node;
+
+	node = pop(&ps->a);
+	if (!node)
+		return ;
+	push(&ps->b, node);
+	write(1, "pb\n", 3);
+	ps->bench.pb++;
+	ps->bench.total++;
+}

@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-void	rev_rotate(t_stack *s)
+int	rev_rotate(t_stack *s)
 {
 	t_node	*prev;
 	t_node	*curr;
 
 	if (!s || s->size < 2 || !s->head || !s->head->next)
-		return ;
+		return (0);
 	prev = NULL;
 	curr = s->head;
 	while (curr->next)
@@ -29,4 +29,38 @@ void	rev_rotate(t_stack *s)
 	prev->next = NULL;
 	curr->next = s->head;
 	s->head = curr;
+	return (1);
+}
+
+void	rra(t_ps *ps)
+{
+	if (!rev_rotate(&ps->a))
+		return ;
+	write(1, "rra\n", 4);
+	ps->bench.rra++;
+	ps->bench.total++;
+}
+
+void	rrb(t_ps *ps)
+{
+	if (!rev_rotate(&ps->b))
+		return ;
+	write(1, "rrb\n", 4);
+	ps->bench.rrb++;
+	ps->bench.total++;
+}
+
+void	rrr(t_ps *ps)
+{
+	int	a;
+	int	b;
+
+	a = rev_rotate(&ps->a);
+	b = rev_rotate(&ps->b);
+	if (a || b)
+	{
+		write(1, "rrr\n", 4);
+		ps->bench.rrr++;
+		ps->bench.total++;
+	}
 }
