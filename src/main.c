@@ -3,9 +3,9 @@
 t_stack do_algo(t_stack *stack_a,t_stack *stack_b,t_options *options)
 {
 	if (options->mode == SIMPLE)
-		selection_sort(stack_a, stack_b);
+		selection_sort(t_ps *ps);
 	else if (options->mode == MEDIUM)
-		//MEDIUM();
+			medium_sort(t_ps *ps)
 	else if (options->mode == COMPLEX)
 		//COMPLEX();
 	else if (options->mode == ADAPTIVE)

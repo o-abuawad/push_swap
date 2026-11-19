@@ -6,7 +6,7 @@
 /*   By: oabu-awa <oabu-awa@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 11:02:52 by oabu-awa          #+#    #+#             */
-/*   Updated: 2026/11/18 14:13:53 by osama            ###   ########.fr       */
+/*   Updated: 2026/11/19 07:54:54 by oabu-awa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	adaptive_sort(t_ps *ps);
 /* Bench & Utils */
 void	print_bench(t_ps *ps);
 void	free_stack(t_stack *s);
+int	disorder(t_ps *ps)
 
 /* Parsing (to be linked by partner) */
 
