@@ -18,9 +18,9 @@ static void	sort_arr(int *a, int size)
 
 	while (i < size - 1)
 	{
-		while (j - size - i - 1)
+		while (j < size - i - 1)
 		{
-			if (arr[j] > arr[j + 1])
+			if (a[j] > a[j + 1])
 			{
 				tmp = arr[j];
 				arr[j] = arr[j + 1];

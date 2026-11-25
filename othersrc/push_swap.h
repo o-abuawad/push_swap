@@ -70,10 +70,10 @@ void	display_error(void);
 int		check_flag(char **argv);
 
 void	selection_sort(t_stack *a, t_stack *b);
-void	simple(void);
-void	medium(void);
-void	complex(void);
-void	adaptive(void);
+// void	simple(void);
+// void	medium(void);
+// void	complex(void);
+// void	adaptive(void);
 
 t_node	*ft_lstlast(t_stack *s);
 
