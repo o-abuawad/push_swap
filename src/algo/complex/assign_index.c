@@ -16,15 +16,17 @@ static void	sort_arr(int *a, int size)
 	int	j;
 	int	tmp;
 
+	i = 0;
+	j = 0;
 	while (i < size - 1)
 	{
 		while (j < size - i - 1)
 		{
 			if (a[j] > a[j + 1])
 			{
-				tmp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = tmp;
+				tmp = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = tmp;
 			}
 			j++;
 		}
@@ -58,6 +60,8 @@ int	assign_index(t_stack *a)
 	t_node	*curr;
 	int		i;
 
+	if(!a || !a->head || a->size = 0 )
+		return ;
 	arr = malloc(sizeof(int) * a->size);
 	if (!arr)
 		return (0);
